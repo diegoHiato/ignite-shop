@@ -8,7 +8,7 @@ interface ProductProps {
 
 export const Product = ({ href, image, alt, ...props }: ProductProps) => {
   return (
-    <article className="group relative p-1 bg-[linear-gradient(180deg,#1ea483_0%,#7465d4_100%)] rounded-lg flex items-center justify-center overflow-hidden">
+    <article className="keen-slider__slide group relative bg-[linear-gradient(180deg,#1ea483_0%,#7465d4_100%)] rounded-lg flex items-center justify-center overflow-hidden">
       <a href={href}>
         <Image src={image} alt={alt} width={520} height={480} {...props} />
       </a>
