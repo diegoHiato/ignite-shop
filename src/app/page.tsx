@@ -1,24 +1,30 @@
-'use client'
-import tshirt1Image from '@/assets/tshirts/1.png'
-import tshirt2Image from '@/assets/tshirts/2.png'
-import tshirt3Image from '@/assets/tshirts/3.png'
-import tshirt4Image from '@/assets/tshirts/4.png'
-import { Product } from '@/components/Product'
-import 'keen-slider/keen-slider.min.css'
-import { useKeenSlider } from 'keen-slider/react'
+import { Carousel } from '@/components/Carousel'
+import { stripe } from '@/lib/stripe'
+import Stripe from 'stripe'
 
-export default function Home() {
-  const [sliderRef] = useKeenSlider({ slides: { perView: 2.5, spacing: 48 } })
+const getProductsFromStripe = async () => {
+  const response = await stripe.products.list({
+    expand: ['data.default_price'],
+  })
+  return response.data
+}
+
+export default async function Home() {
+  const data = await getProductsFromStripe()
+  const products = data.map((product) => {
+    const price = product.default_price as Stripe.Price
+
+    return {
+      id: product.id,
+      name: product.name,
+      imageUrl: product.images[0],
+      price: (price.unit_amount as number) / 100,
+    }
+  })
 
   return (
-    <main
-      className="keen-slider flex min-h-[656px] w-full max-w-[calc(100vw-((100vw-1280px)/2))] ml-auto"
-      ref={sliderRef}
-    >
-      <Product href="/" image={tshirt1Image} alt="Image from product" />
-      <Product href="/" image={tshirt2Image} alt="Image from product" />
-      <Product href="/" image={tshirt3Image} alt="Image from product" />
-      <Product href="/" image={tshirt4Image} alt="Image from product" />
+    <main className="ml-auto">
+      <Carousel products={products} />
     </main>
   )
 }
