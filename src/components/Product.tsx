@@ -5,7 +5,7 @@ interface ProductProps {
   imageUrl: string
   alt: string
   name: string
-  price: number
+  price: string
 }
 
 export const Product = ({ href, imageUrl, alt, name, price }: ProductProps) => {

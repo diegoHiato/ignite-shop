@@ -2,6 +2,8 @@ import { Carousel } from '@/components/Carousel'
 import { stripe } from '@/lib/stripe'
 import Stripe from 'stripe'
 
+export const revalidate = 60 * 60 * 2
+
 const getProductsFromStripe = async () => {
   const response = await stripe.products.list({
     expand: ['data.default_price'],
@@ -18,7 +20,10 @@ export default async function Home() {
       id: product.id,
       name: product.name,
       imageUrl: product.images[0],
-      price: (price.unit_amount as number) / 100,
+      price: new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+      }).format((price.unit_amount as number) / 100),
     }
   })
 
