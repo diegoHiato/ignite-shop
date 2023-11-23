@@ -24,7 +24,7 @@ export const Carousel = ({ products }: CaroulselProps) => {
         return (
           <Product
             alt="Image of the product"
-            href="/"
+            href={`/product/${product.id}`}
             imageUrl={product.imageUrl}
             key={product.id}
             name={product.name}
