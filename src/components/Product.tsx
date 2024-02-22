@@ -11,8 +11,12 @@ interface ProductProps {
 
 export const Product = ({ href, imageUrl, alt, name, price }: ProductProps) => {
   return (
-    <article className="keen-slider__slide group relative bg-[linear-gradient(180deg,#1ea483_0%,#7465d4_100%)] rounded-lg flex items-center justify-center overflow-hidden">
-      <Link href={href} className="relative w-[520px] h-[480px]">
+    <article className="keen-slider__slide group relative flex items-center justify-center overflow-hidden rounded-lg bg-[linear-gradient(180deg,#1ea483_0%,#7465d4_100%)]">
+      <Link
+        className="relative h-[480px] w-[520px]"
+        href={href}
+        prefetch={false}
+      >
         <Image
           src={imageUrl}
           alt={alt}
@@ -22,9 +26,9 @@ export const Product = ({ href, imageUrl, alt, name, price }: ProductProps) => {
         />
       </Link>
 
-      <footer className="absolute bottom-1 left-1 right-1 p-8 rounded-md flex items-center justify-between bg-[#000]/60 translate-y-[110%] opacity-0 transition-transform group-hover:translate-y-[0%] group-hover:opacity-100">
+      <footer className="absolute bottom-1 left-1 right-1 flex translate-y-[110%] items-center justify-between rounded-md bg-[#000]/60 p-8 opacity-0 transition-transform group-hover:translate-y-[0%] group-hover:opacity-100">
         <strong className="text-xl">{name}</strong>
-        <span className="font-bold text-2xl text-principal-300">{price}</span>
+        <span className="text-2xl font-bold text-principal-300">{price}</span>
       </footer>
     </article>
   )
