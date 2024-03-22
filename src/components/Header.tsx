@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export const Header = () => {
   return (
-    <header className="px-8 mx-auto w-full max-w-screen-xl">
+    <header className="mx-auto w-full max-w-screen-xl px-8">
       <Image src={logoImage} alt="Logo of Ignite Shop" />
     </header>
   )

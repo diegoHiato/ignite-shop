@@ -1,3 +1,4 @@
+import { CheckoutButton } from '@/components/CheckoutButton'
 import { stripe } from '@/lib/stripe'
 import Image from 'next/image'
 import Stripe from 'stripe'
@@ -25,9 +26,17 @@ export default async function Product({ params }: ProductProps) {
   }).format((price.unit_amount as number) / 100)
 
   return (
-    <main className="grid grid-cols-2 items-stretch gap-16 max-w-7xl mx-auto box-border">
-      <div className="w-full max-w-xl h-[656px] rounded-lg p-1 bg-[linear-gradient(180deg,#1ea483_0%,#7465d4_100%)] flex items-center justify-center">
-        <Image src={product.images[0]} alt="" width={520} height={480} />
+    <main className="mx-auto box-border grid max-w-7xl grid-cols-2 items-stretch gap-16">
+      <div className="flex h-[656px] w-full max-w-xl items-center justify-center rounded-lg bg-[linear-gradient(180deg,#1ea483_0%,#7465d4_100%)] p-1">
+        <div className="relative h-[480px] w-[520px]">
+          <Image
+            fill
+            priority
+            alt="Product image without alternative text"
+            sizes="100%"
+            src={product.images[0]}
+          />
+        </div>
       </div>
 
       <div className="flex flex-col">
@@ -38,9 +47,7 @@ export default async function Product({ params }: ProductProps) {
 
         <p className="mt-10 text-lg text-base-300">{product.description}</p>
 
-        <button className="mt-auto bg-principal-500 border-0 text-white rounded-lg p-5 cursor-pointer font-bold text-lg hover:bg-principal-300 hover:transition-all">
-          Buy it now
-        </button>
+        <CheckoutButton priceId={price.id} />
       </div>
     </main>
   )
