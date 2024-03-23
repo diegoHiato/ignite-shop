@@ -23,9 +23,9 @@ export async function createCheckoutAction(priceId: string) {
     ],
   })
 
-  if (checkoutSession.url) {
-    redirect(checkoutSession.url)
-  } else {
+  if (!checkoutSession.url) {
     return new Error('Internal server error')
   }
+
+  redirect(checkoutSession.url)
 }
