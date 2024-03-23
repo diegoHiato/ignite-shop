@@ -9,7 +9,7 @@ export async function createCheckoutAction(priceId: string) {
   }
 
   const cancelUrl = `${process.env.NEXT_URL}`
-  const successUrl = `${process.env.NEXT_URL}/success`
+  const successUrl = `${process.env.NEXT_URL}/success?session_id={CHECKOUT_SESSION_ID}`
 
   const checkoutSession = await stripe.checkout.sessions.create({
     cancel_url: cancelUrl,
