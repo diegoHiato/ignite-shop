@@ -1,5 +1,5 @@
 'use client'
-import axios from 'axios'
+import { createCheckoutAction } from '@/app/product/checkout'
 import { useState } from 'react'
 
 interface Props {
@@ -13,11 +13,7 @@ export const CheckoutButton = ({ priceId }: Props) => {
   async function handleClick() {
     try {
       setIsCreatingCheckoutSession(true)
-      const response = await axios.post('/product/checkout', {
-        priceId,
-      })
-      const { checkoutUrl } = response.data
-      window.location.href = checkoutUrl
+      createCheckoutAction(priceId)
     } catch (error) {
       setIsCreatingCheckoutSession(false)
       alert('Fail to redirect')

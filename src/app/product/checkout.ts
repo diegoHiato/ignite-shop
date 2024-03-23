@@ -1,11 +1,11 @@
+'use server'
+
 import { stripe } from '@/lib/stripe'
-import { NextRequest } from 'next/server'
+import { redirect } from 'next/navigation'
 
-export async function POST(request: NextRequest) {
-  const { priceId } = await request.json()
-
+export async function createCheckoutAction(priceId: string) {
   if (!priceId) {
-    return Response.json({ error: 'Price not found' })
+    return new Error('Price not found')
   }
 
   const cancelUrl = `${process.env.NEXT_URL}`
@@ -23,5 +23,9 @@ export async function POST(request: NextRequest) {
     ],
   })
 
-  return Response.json({ checkoutUrl: checkoutSession.url })
+  if (checkoutSession.url) {
+    redirect(checkoutSession.url)
+  } else {
+    return new Error('Internal server error')
+  }
 }
