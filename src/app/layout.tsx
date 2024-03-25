@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${roboto.className} bg-base-900 text-base-300 antialiased`}
+        className={`${roboto.className} bg-custom-neutral-950 text-custom-neutral-200 antialiased`}
       >
         <div className="flex min-h-screen flex-col items-start justify-center gap-8">
           <Header />

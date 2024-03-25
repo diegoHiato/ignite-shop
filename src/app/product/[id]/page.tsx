@@ -27,7 +27,7 @@ export default async function Product({ params }: ProductProps) {
 
   return (
     <main className="mx-auto box-border grid max-w-7xl grid-cols-2 items-stretch gap-16">
-      <div className="flex h-[656px] w-full max-w-xl items-center justify-center rounded-lg bg-[linear-gradient(180deg,#1ea483_0%,#7465d4_100%)] p-1">
+      <div className="flex h-[656px] w-full max-w-xl items-center justify-center rounded-lg bg-product-texture p-1">
         <div className="relative h-[480px] w-[520px]">
           <Image
             fill
@@ -40,12 +40,14 @@ export default async function Product({ params }: ProductProps) {
       </div>
 
       <div className="flex flex-col">
-        <h1 className="text-3xl text-base-300">{product.name}</h1>
-        <span className="mt-4 block text-3xl text-principal-300">
+        <h1 className="text-3xl text-custom-neutral-500">{product.name}</h1>
+        <span className="text-principal-300 mt-4 block text-3xl">
           {formattedPrice}
         </span>
 
-        <p className="mt-10 text-lg text-base-300">{product.description}</p>
+        <p className="mt-10 text-lg text-custom-neutral-500">
+          {product.description}
+        </p>
 
         <CheckoutButton priceId={price.id} />
       </div>

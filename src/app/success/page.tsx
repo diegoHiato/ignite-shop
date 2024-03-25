@@ -27,13 +27,13 @@ export default async function Success({ searchParams }: Props) {
   const productPrincipalIamge = product.images[0]
 
   return (
-    <main className="mx-auto flex h-[656px] flex-col items-center justify-center gap-16">
-      <h1 className="text-4xl font-bold text-base-300">
+    <div className="mx-auto flex h-[656px] flex-col items-center justify-center gap-16">
+      <h1 className="text-4xl font-bold text-custom-neutral-500">
         Purchase Successful ✅
       </h1>
 
       <div className="mx-auto flex w-full flex-col items-center justify-center gap-8">
-        <div className="relative flex h-[145px] w-full max-w-[130px] items-center justify-center rounded-lg bg-[linear-gradient(180deg,#1ea483_0%,#7465d4_100%)] p-2">
+        <div className="relative flex h-[145px] w-full max-w-[130px] items-center justify-center rounded-lg bg-pattern p-2">
           <Image
             src={productPrincipalIamge}
             alt=""
@@ -43,7 +43,7 @@ export default async function Success({ searchParams }: Props) {
           />
         </div>
 
-        <p className="max-w-[560px] text-center text-2xl text-base-300">
+        <p className="max-w-[560px] text-center text-2xl text-custom-neutral-500">
           Yeah! <strong>{customerName}</strong> your{' '}
           <strong>{productName}</strong> is already incoming!
         </p>
@@ -51,10 +51,10 @@ export default async function Success({ searchParams }: Props) {
 
       <Link
         href="/"
-        className="block text-xl font-bold text-principal-500 transition-colors hover:text-principal-300"
+        className="text-principal-500 hover:text-principal-300 block text-xl font-bold transition-colors"
       >
         Back to products
       </Link>
-    </main>
+    </div>
   )
 }

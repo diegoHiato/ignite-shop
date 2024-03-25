@@ -22,7 +22,7 @@ export const CheckoutButton = ({ priceId }: Props) => {
 
   return (
     <button
-      className="mt-auto cursor-pointer rounded-lg border-0 bg-principal-500 p-5 text-lg font-bold text-white hover:transition-all enabled:hover:bg-principal-300 disabled:cursor-not-allowed disabled:opacity-60"
+      className="mt-auto cursor-pointer rounded-lg border-0 bg-custom-green-600 p-5 text-lg font-bold text-white hover:transition-all enabled:hover:bg-custom-green-400 disabled:cursor-not-allowed disabled:opacity-60"
       onClick={handleClick}
       disabled={isCreatingCheckouSession}
     >

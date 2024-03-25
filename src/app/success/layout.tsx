@@ -6,14 +6,14 @@ interface Props {
 }
 
 export const metadata: Metadata = {
-  title: 'Successful Purchase | Ignite Shop',
+  title: 'Purchase Successful | Ignite Shop',
 }
 
 export default function SuccessLayout({ children }: Props) {
   return (
     <>
       <meta name="robots" content="noindex" />
-      <div className="w-full">{children}</div>
+      <main className="w-full">{children}</main>
     </>
   )
 }

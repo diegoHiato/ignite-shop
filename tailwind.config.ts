@@ -6,17 +6,22 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    colors: {
-      white: '#FFF',
-      principal: {
-        300: '#00B37E',
-        500: '#00875F',
+    extend: {
+      colors: {
+        'custom-neutral': {
+          '200': '#E1E1E6',
+          '500': '#C4C4CC',
+          '700': '#202024',
+          '950': '#121214',
+        },
+        'custom-green': {
+          '400': '#00B37E',
+          '600': '#00875F',
+        },
+        white: '#FFF',
       },
-      base: {
-        100: '#E1E1E6',
-        300: '#C4C4CC',
-        800: '#202024',
-        900: '#121214',
+      backgroundImage: {
+        'product-texture': 'linear-gradient(180deg, #1EA483 0%, #7465D4 100%)',
       },
     },
   },
